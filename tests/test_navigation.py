@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 import unittest
 import json
 import re
+import hashlib
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -60,6 +61,13 @@ class NavigationTests(unittest.TestCase):
                     self.assertNotIn('<p>', header)
                 walk(node.get('children', []), (*ancestors, node['path']))
         walk(json.loads((ROOT / 'scripts/navigation.json').read_text()))
+
+    def test_pages_request_current_stylesheet(self):
+        version = hashlib.sha256((ROOT / 'style.css').read_bytes()).hexdigest()[:12]
+        for path in ROOT.rglob('*.html'):
+            href = re.search(r'<link rel="stylesheet" href="([^"]+)"', path.read_text()).group(1)
+            self.assertEqual(href.split('?')[-1], f'v={version}', str(path))
+            self.assertEqual((path.parent / href.split('?')[0]).resolve(), ROOT / 'style.css')
 
     def test_local_links_resolve(self):
         for path in ROOT.rglob('*.html'):

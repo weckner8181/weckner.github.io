@@ -26,6 +26,10 @@ To add a page:
 5. Commit the HTML files along with the hierarchy change. GitHub Pages serves
    the generated HTML directly; no build or JavaScript is needed for navigation.
 
+Run the navigation script after changing `style.css` too. It versions each
+page's stylesheet URL using the CSS content hash so browsers fetch updated
+styles instead of reusing an older cached copy.
+
 The sample topic and date pages are marked as examples and can be replaced or
 removed. Keep large archives divided by year/month so each expanded branch
 remains short. The full navigation is present in the HTML; for a very large

@@ -2,6 +2,7 @@
 Run from any directory: python3 scripts/build_navigation.py
 """
 import json
+import hashlib
 import os
 import re
 from html import escape
@@ -42,6 +43,7 @@ def navigation(nodes, current, ancestors):
 
 def build():
     nodes = json.loads((ROOT / 'scripts/navigation.json').read_text())
+    css_version = hashlib.sha256((ROOT / 'style.css').read_bytes()).hexdigest()[:12]
     pages = list(flatten(nodes))
     for node, _ in pages:
         if not (ROOT / node['path']).is_file():
@@ -49,6 +51,9 @@ def build():
     for node, ancestors in pages:
         path = ROOT / node['path']
         source = path.read_text()
+        stylesheet = f'{relative("style.css", node["path"])}?v={css_version}'
+        source = re.sub(r'(<link rel="stylesheet" href=")[^"]+("\s*/?>)',
+                        lambda match: match[1] + stylesheet + match[2], source)
         nav = '<nav aria-label="Main navigation">\n' + navigation(
             nodes, node['path'], {a['path'] for a in ancestors}
         ) + '\n</nav>'
