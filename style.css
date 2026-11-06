@@ -1,0 +1,123 @@
+
+body {
+  margin: 0;
+  padding: 25px 12px;
+  background: #efede4;
+  color: #222;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.site {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+header {
+  background: #f8f7f1;
+  border: 1px solid #aaa99e;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  color: #243e75;
+  font-size: 27px;
+  font-weight: normal;
+  margin: 0;
+}
+
+header p {
+  margin: 3px 0 0;
+  color: #555;
+  font-size: 12px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 135px minmax(0, 1fr);
+  gap: 15px;
+}
+
+aside {
+  padding: 10px 3px;
+  font-size: 13px;
+}
+
+aside h3 {
+  margin: 0 0 12px;
+}
+
+nav a {
+  display: block;
+  margin-bottom: 7px;
+}
+
+main {
+  background: white;
+  border: 1px solid #ccc8bb;
+  padding: 20px 25px;
+  min-height: 450px;
+}
+
+h2, h3 {
+  color: #243e75;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 17px;
+}
+
+a {
+  color: #0033aa;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #654080;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #bbb;
+  margin: 22px 0;
+}
+
+li {
+  margin-bottom: 7px;
+}
+
+footer {
+  border-top: 1px solid #bbb;
+  margin-top: 35px;
+  padding-top: 12px;
+  font-size: 11px;
+  color: #777;
+  text-align: center;
+}
+
+small {
+  color: #666;
+}
+
+@media (max-width: 550px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  nav a {
+    display: inline-block;
+    margin-right: 12px;
+  }
+
+  main {
+    padding: 16px;
+  }
+}
