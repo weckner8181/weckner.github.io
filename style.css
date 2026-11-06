@@ -71,6 +71,21 @@ aside h3 {
   overflow-wrap: anywhere;
 }
 
+.profile-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 0;
+}
+
+.profile-links img {
+  display: block;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
 .nav-tree a[aria-current="page"] {
   font-weight: bold;
   color: #243e75;
