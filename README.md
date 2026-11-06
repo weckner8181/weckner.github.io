@@ -1,6 +1,14 @@
 # weckner.github.io
 Personal webpage
 
+## Style reference
+
+For a future contextual back link, retain the former Physics notes style:
+`<p><a href="index.html">« Back to homepage</a></p>` — a plain, underlined
+text link using the existing link color, prefixed with `«`. Adjust the label
+and relative destination as appropriate. Do not add this link to Physics notes;
+the sidebar and breadcrumbs provide navigation there.
+
 ## Nested pages and navigation
 
 The site is static HTML. Arrows use native `details`/`summary` controls; page
