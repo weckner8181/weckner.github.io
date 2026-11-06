@@ -36,7 +36,7 @@ header p {
 
 .layout {
   display: grid;
-  grid-template-columns: 135px minmax(0, 1fr);
+  grid-template-columns: 200px minmax(0, 1fr);
   gap: 15px;
 }
 
@@ -49,9 +49,110 @@ aside h3 {
   margin: 0 0 12px;
 }
 
-nav a {
-  display: block;
+.nav-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-tree .nav-tree {
+  margin: 5px 0 5px 10px;
+  padding-left: 5px;
+  border-left: 1px solid #ccc8bb;
+}
+
+.nav-tree li {
+  position: relative;
   margin-bottom: 7px;
+}
+
+.nav-tree a {
+  display: block;
+  margin-left: 24px;
+  overflow-wrap: anywhere;
+}
+
+.nav-tree a[aria-current="page"] {
+  font-weight: bold;
+  color: #243e75;
+  text-decoration-thickness: 2px;
+}
+
+.nav-tree summary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  list-style: none;
+  color: #243e75;
+}
+
+.nav-tree summary::-webkit-details-marker {
+  display: none;
+}
+
+.nav-tree summary::before {
+  content: "▸";
+}
+
+.nav-tree details[open] > summary::before {
+  content: "▾";
+}
+
+.nav-tree summary:hover {
+  background: #dedbd0;
+}
+
+a:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #243e75;
+  outline-offset: 2px;
+}
+
+.breadcrumbs {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 4px 8px;
+}
+
+.breadcrumbs li {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.breadcrumbs li + li::before {
+  content: "›";
+  margin-right: 8px;
+}
+
+.example-notice {
+  font-size: 13px;
+  color: #666;
+  border-left: 2px solid #ccc8bb;
+  padding-left: 10px;
+}
+
+.note-figure {
+  margin: 20px 0;
+}
+
+.note-figure figcaption {
+  margin-top: 6px;
+  color: #666;
+  font-size: 12px;
 }
 
 main {
@@ -161,11 +262,6 @@ small {
 
   .layout {
     grid-template-columns: 1fr;
-  }
-
-  nav a {
-    display: inline-block;
-    margin-right: 12px;
   }
 
   main {
