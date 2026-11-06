@@ -3,6 +3,11 @@ Personal webpage
 
 ## Style reference
 
+Top-level page names appear only in the top header, not again at the start
+of the main content. Home is the exception: keep the name and role in its
+header and “Welcome!” in its content. Subpages retain their own title beneath
+the breadcrumbs, with the top-level section name in the header.
+
 For a future contextual back link, retain the former Physics notes style:
 `<p><a href="index.html">« Back to homepage</a></p>` — a plain, underlined
 text link using the existing link color, prefixed with `«`. Adjust the label
