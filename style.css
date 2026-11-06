@@ -107,7 +107,58 @@ small {
   color: #666;
 }
 
+.publication {
+  display: grid;
+  grid-template-columns: minmax(0, 180px) minmax(0, 1fr);
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.publication figure {
+  margin: 0;
+}
+
+.publication img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.publication-placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 130px;
+  padding: 10px;
+  border: 1px dashed #aaa99e;
+  background: #f8f7f1;
+  color: #666;
+  text-align: center;
+}
+
+.publication figcaption,
+.publication-pending {
+  color: #666;
+  font-size: 12px;
+}
+
+.publication figcaption {
+  margin-top: 6px;
+}
+
+.publication h4 {
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.publication p {
+  margin: 0 0 10px;
+}
+
 @media (max-width: 550px) {
+  .publication {
+    grid-template-columns: 1fr;
+  }
+
   .layout {
     grid-template-columns: 1fr;
   }
