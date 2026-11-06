@@ -21,13 +21,9 @@ header {
   margin-bottom: 10px;
 }
 
-header h1,
-.publication-period {
-  font-size: 27px;
-}
-
 header h1 {
   color: #243e75;
+  font-size: 27px;
   font-weight: normal;
   margin: 0;
 }
