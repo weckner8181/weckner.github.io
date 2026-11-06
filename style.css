@@ -184,6 +184,10 @@ h3 {
   font-size: 17px;
 }
 
+.home-page > h3 {
+  margin-top: 32px;
+}
+
 a {
   color: #0033aa;
   text-decoration: underline;
