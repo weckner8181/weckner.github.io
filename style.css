@@ -21,9 +21,13 @@ header {
   margin-bottom: 10px;
 }
 
+header h1,
+.publication-period {
+  font-size: 27px;
+}
+
 header h1 {
   color: #243e75;
-  font-size: 27px;
   font-weight: normal;
   margin: 0;
 }
@@ -254,8 +258,11 @@ small {
   margin-top: 6px;
 }
 
-.publication h4 {
+.publication h3 {
   margin: 0 0 8px;
+  font-size: 1em;
+  font-weight: bold;
+  color: inherit;
   overflow-wrap: anywhere;
 }
 
