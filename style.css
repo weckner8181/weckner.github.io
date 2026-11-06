@@ -227,6 +227,10 @@ small {
   margin: 20px 0;
 }
 
+.publication-text-only {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .publication figure {
   margin: 0;
 }
