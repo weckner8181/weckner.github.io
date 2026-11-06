@@ -16,6 +16,17 @@ the sidebar and breadcrumbs provide navigation there.
 
 ## Nested pages and navigation
 
+Only Home and Publications are currently published. The Physics notes pages
+and original navigation hierarchy are preserved in `_archive/`, which is
+excluded from the GitHub Pages build by `_config.yml`. These files are source
+examples; their relative links retain their original locations.
+
+To restore Physics notes, move `_archive/physics-notes.html` and
+`_archive/physics-notes/` back to the repository root, merge its branch from
+`_archive/navigation.json` into `scripts/navigation.json`, and run the
+navigation script. Update the live-page checks in `tests/test_navigation.py`
+to reflect the restored section.
+
 The site is static HTML. Arrows use native `details`/`summary` controls; page
 links navigate independently. Only the current page's ancestors start open.
 

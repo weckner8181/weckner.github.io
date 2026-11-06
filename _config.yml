@@ -1,0 +1,3 @@
+# Keep reference material out of the GitHub Pages build.
+exclude:
+  - _archive

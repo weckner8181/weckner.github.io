@@ -25,14 +25,24 @@ class Page(HTMLParser):
             self.summaries.append(attrs)
 
 class NavigationTests(unittest.TestCase):
-    def test_home_starts_collapsed(self):
-        page = Page(ROOT / 'index.html')
-        self.assertGreater(len(page.summaries), 0)
-        self.assertEqual(page.open_branches, [])
-        self.assertTrue(all(s.get('aria-label') for s in page.summaries))
+    def test_live_navigation_has_only_home_and_publications(self):
+        nodes = json.loads((ROOT / 'scripts/navigation.json').read_text())
+        self.assertEqual([n['path'] for n in nodes], ['index.html', 'publications.html'])
+        for node in nodes:
+            text = (ROOT / node['path']).read_text()
+            self.assertNotIn('physics-notes', text)
+            self.assertEqual(Page(ROOT / node['path']).summaries, [])
+
+    def test_physics_notes_are_archived_and_excluded(self):
+        self.assertFalse((ROOT / 'physics-notes.html').exists())
+        self.assertFalse((ROOT / 'physics-notes').exists())
+        self.assertTrue((ROOT / '_archive/physics-notes.html').is_file())
+        self.assertEqual(len(list((ROOT / '_archive/physics-notes').rglob('*.html'))), 7)
+        self.assertIn('  - _archive', (ROOT / '_config.yml').read_text())
+        self.assertFalse((ROOT / '.nojekyll').exists())
 
     def test_deep_page_opens_only_ancestors(self):
-        path = ROOT / 'physics-notes/atomic-physics/zeeman-effect/example.html'
+        path = ROOT / '_archive/physics-notes/atomic-physics/zeeman-effect/example.html'
         self.assertTrue(path.is_file(), 'Deep example page must exist')
         page = Page(path)
         self.assertEqual(page.open_branches, [
@@ -65,13 +75,15 @@ class NavigationTests(unittest.TestCase):
     def test_pages_request_current_stylesheet(self):
         version = hashlib.sha256((ROOT / 'style.css').read_bytes()).hexdigest()[:12]
         for path in ROOT.rglob('*.html'):
+            if '_archive' in path.relative_to(ROOT).parts:
+                continue
             href = re.search(r'<link rel="stylesheet" href="([^"]+)"', path.read_text()).group(1)
             self.assertEqual(href.split('?')[-1], f'v={version}', str(path))
             self.assertEqual((path.parent / href.split('?')[0]).resolve(), ROOT / 'style.css')
 
     def test_local_links_resolve(self):
         for path in ROOT.rglob('*.html'):
-            if '.git' in path.parts:
+            if '.git' in path.parts or '_archive' in path.relative_to(ROOT).parts:
                 continue
             for link in Page(path).links:
                 href = link.get('href', '')

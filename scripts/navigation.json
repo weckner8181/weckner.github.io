@@ -1,17 +1,10 @@
 [
-  {"title": "Home", "path": "index.html"},
-  {"title": "Publications", "path": "publications.html"},
-  {"title": "Physics notes", "path": "physics-notes.html", "children": [
-    {"title": "Atomic physics", "path": "physics-notes/atomic-physics/index.html", "children": [
-      {"title": "Zeeman effect", "path": "physics-notes/atomic-physics/zeeman-effect/index.html", "children": [
-        {"title": "Example subpage", "path": "physics-notes/atomic-physics/zeeman-effect/example.html"}
-      ]},
-      {"title": "Optical pumping", "path": "physics-notes/atomic-physics/optical-pumping.html"}
-    ]},
-    {"title": "2026", "path": "physics-notes/2026/index.html", "children": [
-      {"title": "November", "path": "physics-notes/2026/11/index.html", "children": [
-        {"title": "06 — Example daily note", "path": "physics-notes/2026/11/06.html"}
-      ]}
-    ]}
-  ]}
+  {
+    "title": "Home",
+    "path": "index.html"
+  },
+  {
+    "title": "Publications",
+    "path": "publications.html"
+  }
 ]
